@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
+    <div class="content">
+        <div class="title m-b-md">
+            VideOCR
+        </div>
 
-                <div class="panel-body">
-                    Your Application's Landing Page.
-                </div>
-            </div>
+        <div class="links">
+            <a href="#">About Next JENN</a>
+            <a href="#">Documentation</a>
+            <a href="#">Try It Out !</a>
+            <a href="#">GitHub Source</a>
         </div>
     </div>
-</div>
 @endsection
