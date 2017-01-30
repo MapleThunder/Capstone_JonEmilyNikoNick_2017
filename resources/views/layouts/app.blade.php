@@ -70,6 +70,10 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        .jenn-list {
+            list-style: none;
+        }
     </style>
 </head>
 <body id="app-layout">
