@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use TesseractOCR;
+use WrapTesseractOCR;
 
 use App\Http\Requests;
 
@@ -19,10 +21,9 @@ class VideocrController extends Controller
 
   public function pancake()
   {
-    $filename = "testScreenshot.png";
-    $tesseract = new TesseractOCR(__DIR__ . '/../uploads/' . $filename);
-    $text = $tesseract->recognize();
-    return $text;
+    $filename = "test1.png";
+    $text = (new TesseractOCR(__DIR__ . '/../../../uploads/' . $filename))->run();
+    return view('videocr.video', compact('text'));
   }
 
 }
