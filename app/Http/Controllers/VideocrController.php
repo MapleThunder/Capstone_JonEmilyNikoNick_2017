@@ -16,4 +16,13 @@ class VideocrController extends Controller
     {
       return view('videocr.show');
     }
+
+  public function pancake()
+  {
+    $filename = "testScreenshot.png";
+    $tesseract = new TesseractOCR(__DIR__ . '/../uploads/' . $filename);
+    $text = $tesseract->recognize();
+    return $text;
+  }
+
 }
