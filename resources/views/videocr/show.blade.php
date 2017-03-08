@@ -13,6 +13,9 @@
                         VIDEO LINKAGE HERE OR IMAGE UPLOAD !!
 
                     </div>
+                    <div class="panel-body">
+
+                    </div>
                 </div>
             </div>
         </div>

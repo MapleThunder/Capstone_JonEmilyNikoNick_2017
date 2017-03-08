@@ -22,3 +22,4 @@ Route::resource('about', 'AboutController');
 Route::resource('docs', 'DocsController');
 Route::resource('videocr', 'VideocrController');
 
+
