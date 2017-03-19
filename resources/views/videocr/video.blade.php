@@ -1,4 +1,3 @@
-{{$text}}
 @extends('layouts.app')
 
 @section('content')
@@ -9,9 +8,11 @@
                     <div class="panel-heading">VideOCR</div>
 
                     <div class="panel-body">
-                        This is the Video Page!
-                        <br>
+                        <div id="iframeDiv">
+                            <iframe width="560" height="315" src="{{$embedUrl}}" frameborder="0" allowfullscreen></iframe>
+                            <!--example youtube link: https://www.youtube.com/watch?v=Jimm11oUrro-->
 
+                        </div>
                     </div>
                 </div>
             </div>

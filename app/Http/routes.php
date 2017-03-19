@@ -20,5 +20,6 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::resource('about', 'AboutController');
 Route::resource('docs', 'DocsController');
-Route::resource('videocr', 'VideocrController@pancake');
+Route::get('videocr', 'VideocrController@index');
+Route::post('videocr', 'VideocrController@showVideo');
 

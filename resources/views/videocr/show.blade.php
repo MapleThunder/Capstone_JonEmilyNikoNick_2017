@@ -10,7 +10,13 @@
                     <div class="panel-body">
                         This is the page that will have the actual working application on it.
                         <br>
-                        VIDEO LINKAGE HERE OR IMAGE UPLOAD !!
+                        <div id="formDiv">
+                            <form method="POST" action="/videocr" >
+                                {{csrf_field()}}
+                                Video EMBED url: <input type="text" id="url" name="url">
+                                <input type="submit" value="GO!">
+                            </form>
+                        </div>
 
                     </div>
                 </div>
