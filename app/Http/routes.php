@@ -23,3 +23,4 @@ Route::resource('docs', 'DocsController');
 Route::get('videocr', 'VideocrController@index');
 Route::post('videocr', 'VideocrController@showVideo');
 
+
