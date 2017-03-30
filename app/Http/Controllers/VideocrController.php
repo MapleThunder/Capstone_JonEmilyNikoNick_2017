@@ -47,7 +47,7 @@ class VideocrController extends Controller
         //once code isolated, add to end of embedUrl string
         $embedUrl = "https://player.vimeo.com/video/" . $videoCode;
       } else {
-        //???
+        //??? yer fucked bruh
       }
 
       return view("videocr.video", compact("embedUrl"));
