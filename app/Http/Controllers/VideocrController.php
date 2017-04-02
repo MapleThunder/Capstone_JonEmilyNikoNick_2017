@@ -28,7 +28,7 @@ class VideocrController extends Controller
 
   public function showVideo(Request $request)
   {
-    if (isset($request->url))
+    if (isset($request->url) && $request->url != "")
     {
 
       $url = $request->url;
@@ -48,10 +48,28 @@ class VideocrController extends Controller
         $embedUrl = "https://player.vimeo.com/video/" . $videoCode;
       } else {
         //??? yer fucked bruh
+          $embedUrl = "ERROR";
       }
 
       return view("videocr.video", compact("embedUrl"));
     }
+
+  }
+
+  public function readImage(Request $request)
+  {
+      if (isset($request->imgUp))
+      {
+          $imageName = 'tmpImg.png';
+          // Get the image
+          $image = $request->files->get('imgUp');
+          // Move it temporarily
+          $imageLoc = __DIR__ . '/../../../uploads/' . $imageName;
+          $image->move($imageLoc);
+
+          $text = (new TesseractOCR($imageLoc))->run();
+          var_dump($text); die();
+      }
   }
 
 }
