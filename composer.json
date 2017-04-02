@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-      "thiagoalessio/tesseract_ocr": "1.0.0-RC"
+        "thiagoalessio/tesseract_ocr": "1.0.0-RC"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
