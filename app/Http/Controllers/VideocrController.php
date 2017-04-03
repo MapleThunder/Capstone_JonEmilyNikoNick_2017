@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ReadText;
 use Illuminate\Http\Request;
 use TesseractOCR;
 use WrapTesseractOCR;
@@ -58,68 +59,25 @@ class VideocrController extends Controller
 
     public function readImage(Request $request)
     {
-        $target_dir = __DIR__ . '/../../../uploads/';
+        // Grab the image
         $target_file = $_FILES["imgUp"]["name"];
+        // Recognize the text
+        $text = (new TesseractOCR($_FILES["imgUp"]["tmp_name"]))->recognize();
 
-        $text = (new TesseractOCR($_FILES["imgUp"]))->run();
-
-        var_dump($text); die();
-
-        $uploadOk = 1;
-        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-        // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"]))
+        $readText = new ReadText();
+        $readText->content = $text;
+        // Add the user or a 0 for a guest.
+        if(isset($request->read_for_user))
         {
-            $check = getimagesize($_FILES["imgUp"]["tmp_name"]);
-            if($check !== false)
-            {
-              echo "File is an image - " . $check["mime"] . ".";
-              $uploadOk = 1;
-            }
-            else
-            {
-              echo "File is not an image.";
-              $uploadOk = 0;
-            }
-        }
-
-        // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif" ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
-
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
+            $readText->read_for_user = $request->read_for_user;
         }
         else
         {
-            if (move_uploaded_file($_FILES["imgUp"]["tmp_name"], $target_file))
-            {
-                echo "The file ". basename( $_FILES["imgUp"]["name"]). " has been uploaded.";
-            }
-            else
-            {
-                echo "Sorry, there was an error uploading your file.";
-            }
+            $readText->read_for_user = 1;
         }
+        $readText->save();
 
-
-
-      if (isset($request->imgUp))
-      {
-          $imageName = 'tmpImg.png';
-          // Get the image
-          $image = $request->files->get('imgUp');
-          // Move it temporarily
-          $imageLoc = __DIR__ . '/../../../uploads/' . $imageName;
-          $image->move($imageLoc);
-
-          $text = (new TesseractOCR($imageLoc))->run();
-          var_dump($text); die();
-      }
-  }
+        return view("videocr.image", compact("text"));
+    }
 
 }

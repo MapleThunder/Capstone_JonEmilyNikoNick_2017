@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c35b921bee4304876d587902d68df8f8",
-    "content-hash": "c28ef64634d83f2c6b40b200befdbde7",
+    "hash": "e2b3d201dba647629b82ce7726bdf852",
+    "content-hash": "f77600374e0dbc36855a654ec71fbcbe",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1747,45 +1747,45 @@
         },
         {
             "name": "thiagoalessio/tesseract_ocr",
-            "version": "1.0.0-RC",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thiagoalessio/tesseract-ocr-for-php.git",
-                "reference": "b22008ee163330aaaaae97424aa8b7dde8246882"
+                "reference": "4a594f46fb5003104e8ba377d643c9ce87f272c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thiagoalessio/tesseract-ocr-for-php/zipball/b22008ee163330aaaaae97424aa8b7dde8246882",
-                "reference": "b22008ee163330aaaaae97424aa8b7dde8246882",
+                "url": "https://api.github.com/repos/thiagoalessio/tesseract-ocr-for-php/zipball/4a594f46fb5003104e8ba377d643c9ce87f272c9",
+                "reference": "4a594f46fb5003104e8ba377d643c9ce87f272c9",
                 "shasum": ""
             },
             "require-dev": {
-                "phpunit/phpunit": "5.3.2"
+                "phpunit/phpunit": "3.7.*"
             },
             "type": "library",
             "autoload": {
                 "classmap": [
-                    "src"
+                    "TesseractOCR/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Thiago Alessio Pereira",
+                    "name": "Thiago Alessio",
                     "email": "thiagoalessio@me.com",
-                    "homepage": "http://thiagoalessio.me"
+                    "homepage": "http://thiagoalessio.com"
                 }
             ],
-            "description": "A wrapper to work with Tesseract OCR inside PHP.",
+            "description": "A wrapper to work with TesseractOCR inside PHP",
             "keywords": [
                 "OCR",
                 "Tesseract",
                 "text recognition"
             ],
-            "time": "2016-04-20 23:29:55"
+            "time": "2015-04-02 13:59:48"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3225,9 +3225,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "thiagoalessio/tesseract_ocr": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

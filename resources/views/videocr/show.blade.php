@@ -26,6 +26,9 @@
                     <div class="panel-body">
                         <form method="POST" action="/videocr/image" enctype="multipart/form-data" >
                             {{csrf_field()}}
+                            @if (isset(Auth::user()->id))
+                                <input type="hidden" name="read_for_user" value="{{ Auth::user()->id }}" />
+                            @endif
                             <input type="file" name="imgUp" id="imgUp" />
                             <input type="submit" value="Read Image" />
                         </form>
