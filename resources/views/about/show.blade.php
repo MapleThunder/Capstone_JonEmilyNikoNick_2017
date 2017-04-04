@@ -44,6 +44,17 @@
 
                     <div class="panel-body">
 
+                        <p>
+                            Emily was born and raised in Ottawa, ON, Canada and moved to Halifax, NS in 2009 to attend
+                            Dalhousie University. She graduated in 2014 with a degree in Spanish & Latin American Studies.
+                            After university, she worked for a while before deciding to return to school to gain better
+                            skills for a career. After suggestions to try an online coding tutorial, which she thoroughly
+                            enjoyed, she decided to attend the Nova Scotia Community College (NSCC) for Information Technology.
+                            She found her database courses most interesting and chose Database Analytics Development as her concentration.
+                            Emily will graduate from the IT program in the spring of 2017 with a full-time job
+                            lined up at IBM. She is excited to begin her career in development.
+                        </p>
+
                     </div>
                 </div>
             </div>
