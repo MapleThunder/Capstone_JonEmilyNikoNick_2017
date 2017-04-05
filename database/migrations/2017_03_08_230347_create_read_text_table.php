@@ -12,7 +12,7 @@ class CreateReadTextTable extends Migration
      */
     public function up()
     {
-      Schema::create('read_text', function (Blueprint $table) {
+      Schema::create('read_texts', function (Blueprint $table) {
         $table->increments('id');
         $table->string('content');
         $table->integer('read_for_user');
@@ -20,7 +20,7 @@ class CreateReadTextTable extends Migration
         $table->timestamps();
       });
 
-      Schema::table('read_text', function ($table) {
+      Schema::table('read_texts', function ($table) {
         //set foreign keys
         $table->foreign('read_for_user')->references('id')->on('users');
       });
@@ -33,6 +33,6 @@ class CreateReadTextTable extends Migration
      */
     public function down()
     {
-      Schema::drop('read_text');
+      Schema::drop('read_texts');
     }
 }

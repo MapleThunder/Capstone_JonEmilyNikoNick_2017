@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ReadText;
 use Illuminate\Http\Request;
 use TesseractOCR;
 use WrapTesseractOCR;
@@ -28,7 +29,7 @@ class VideocrController extends Controller
 
   public function showVideo(Request $request)
   {
-    if (isset($request->url))
+    if (isset($request->url) && $request->url != "")
     {
 
       $url = $request->url;
@@ -47,11 +48,36 @@ class VideocrController extends Controller
         //once code isolated, add to end of embedUrl string
         $embedUrl = "https://player.vimeo.com/video/" . $videoCode;
       } else {
-        //???
+        //??? yer fucked bruh
+          $embedUrl = "ERROR";
       }
 
       return view("videocr.video", compact("embedUrl"));
     }
+
   }
+
+    public function readImage(Request $request)
+    {
+        // Grab the image
+        $target_file = $_FILES["imgUp"]["name"];
+        // Recognize the text
+        $text = (new TesseractOCR($_FILES["imgUp"]["tmp_name"]))->recognize();
+
+        $readText = new ReadText();
+        $readText->content = $text;
+        // Add the user or a 0 for a guest.
+        if(isset($request->read_for_user))
+        {
+            $readText->read_for_user = $request->read_for_user;
+        }
+        else
+        {
+            $readText->read_for_user = 1;
+        }
+        $readText->save();
+
+        return view("videocr.image", compact("text"));
+    }
 
 }

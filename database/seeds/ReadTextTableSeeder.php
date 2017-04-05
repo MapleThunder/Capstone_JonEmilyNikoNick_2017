@@ -29,6 +29,6 @@ class ReadTextTableSeeder extends Seeder
         ];
 
 
-        DB::table('read_text')->insert($read_text);
+        DB::table('read_texts')->insert($read_text);
     }
 }
