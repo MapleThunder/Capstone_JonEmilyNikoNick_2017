@@ -47,7 +47,7 @@ class VideocrController extends Controller
     //https://gist.github.com/kyleian/b049b066e787f2599063b21208b6d8bf
     //http://chandrewz.github.io/blog/selenium-on-centos
     $host = 'http://localhost:4444/wd/hub';
-    $driver = RemoteWebDriver::create($host, $caps);
+    $driver = RemoteWebDriver::create($host,  DesiredCapabilities::chrome());
 
     //testing hitting a website with the browser
     //$driver->navigate('http://www.wikipedia.org/');
@@ -129,7 +129,7 @@ class VideocrController extends Controller
         // Grab the image
         $target_file = $_FILES["imgUp"]["name"];
         // Recognize the text
-        $text = (new TesseractOCR($_FILES["imgUp"]["tmp_name"]))->recognize();
+        $text = (new TesseractOCR($_FILES["imgUp"]["tmp_name"]))->run();
 
         $readText = new ReadText();
         $readText->content = $text;
