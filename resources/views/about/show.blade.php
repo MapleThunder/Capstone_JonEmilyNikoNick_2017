@@ -66,9 +66,15 @@
             <div class="col-md-10 col-md-offset-1">
                 <div id="nikob" class="panel panel-default">
                     <div class="panel-heading">Niko Bentley</div>
-
                     <div class="panel-body">
-
+                        Niko was born and raised in Halifax, Nova Scotia. He has had an interest in computers from a
+                        young age. His first foray into programming was in elementary where he taught himself simple HTML
+                        to be able to change the look of text on the Neopets forums, and he brought this interest with
+                        him throughout his schooling. After working for a few years after high school Niko was suggested
+                        by a friend to go to NSCC and take the IT program. The generalized first year helped him to get
+                        a feeling for the different aspects of IT. His database and programming classes stood out the
+                        most to him so he chose the Database Analytics Developer concentration. Niko will graduate in June
+                        of 2017 with a full time position at Bluelight Analytics.
                     </div>
                 </div>
             </div>
