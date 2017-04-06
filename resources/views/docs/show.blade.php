@@ -55,14 +55,13 @@
 
                         <p><em>Technical specifications</em></p>
 
-
                             <ul>
                                 <li>This website uses the pre-existing OCR software Tesseract OCR.</li>
                                 <li>The OCR technology is hosted on the website, which is written in PHP with the use of the Laravel framework.</li>
                                 <li>The PHP website is built on top of a LAMP (Linux, Apache, MySQL, PHP) architecture.</li>
                                 <li>Github is used as version control software.</li>
-                                <li>All text captured through the OCR is stored in a MySQL database for possible future analysis.</li>
-                                <li>All registered users are also stored in the MySQL database.</li>
+                                <li>All text captured through the OCR is stored in a SQLite database for possible future analysis.</li>
+                                <li>All registered users are also stored in the SQLite database.</li>
                                 <li>All registered users are able to sign in and review their text-capture history.</li>
                             </ul>
 
