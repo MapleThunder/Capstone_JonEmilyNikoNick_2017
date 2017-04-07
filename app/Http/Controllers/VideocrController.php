@@ -22,14 +22,14 @@ class VideocrController extends Controller
       return view('videocr.show');
     }
 
-  public function pancake()
+  public function PerformTextgrab()
   {
     $filename = "test1.png";
     $text = (new TesseractOCR(__DIR__ . '/../../../uploads/' . $filename))->run();
     return view('videocr.video', compact('text'));
   }
 
-  public function TakeScreenshot($element=null) {
+  public function TakeScreenshot(Request $request) {
     //The original TakeScreenshot before being optimized for this project: https://github.com/facebook/php-webdriver/wiki/taking-full-screenshot-and-of-an-element
 
 
@@ -51,11 +51,14 @@ class VideocrController extends Controller
 
     //testing hitting a website with the browser
     //$driver->navigate('http://www.wikipedia.org/');
-    $driver->get('https://youtu.be/hyoTNwyjYno?t=76');
+    $pancake = $_POST["tessUrl"];
+    $driver->get($pancake);//
+    //$driver->get('https://youtu.be/SeOTOQWM1RU?t=32');
+    $driver->navigate();
     $element = $driver->findElement(\Facebook\WebDriver\WebDriverBy::id('movie_player'));// (WebDriverBy::id("movie_player"));
 
     // Change the Path to your own settings
-    $screenshot = __DIR__ . "/../../../uploads/testScreenshot.png";
+    $screenshot = __DIR__ . "/../../../uploads/tempScreenshot.png";
 
     // Change the driver instance
     $driver->takeScreenshot($screenshot);
@@ -63,35 +66,33 @@ class VideocrController extends Controller
     if(!file_exists($screenshot)) {
       throw new Exception('Could not save screenshot');
     }*/
+    $element_screenshot = __DIR__ . "/../../../uploads/tempScreenshot.png"; // Change the path here as well
 
-    if( ! (bool) $element) {
-      return $screenshot;
-    }
+    $element_width = $element->getSize()->getWidth();
+    $element_height = $element->getSize()->getHeight();
 
-        $element_screenshot = __DIR__ . "/../../../uploads/testScreenshot.png"; // Change the path here as well
+    $element_src_x = $element->getLocation()->getX();
+    $element_src_y = $element->getLocation()->getY();
 
-        $element_width = $element->getSize()->getWidth();
-        $element_height = $element->getSize()->getHeight();
+    // Create image instances
+    $src = imagecreatefrompng($screenshot);
+    $dest = imagecreatetruecolor($element_width, $element_height);
 
-        $element_src_x = $element->getLocation()->getX();
-        $element_src_y = $element->getLocation()->getY();
+    // Copy
+    imagecopy($dest, $src, 0, 0, $element_src_x, $element_src_y, $element_width, $element_height);
 
-        // Create image instances
-        $src = imagecreatefrompng($screenshot);
-        $dest = imagecreatetruecolor($element_width, $element_height);
-
-        // Copy
-        imagecopy($dest, $src, 0, 0, $element_src_x, $element_src_y, $element_width, $element_height);
-
-        imagepng($dest, $element_screenshot);
+    imagepng($dest, $element_screenshot);
 
     // unlink($screenshot); // unlink function might be restricted in mac os x.
 /*
     if( ! file_exists($element_screenshot)) {
       throw new Exception('Could not save element screenshot');
     }*/
+    $embedUrl = $_POST["embedUrl"];
 
-    return $element_screenshot;
+    $text = (new TesseractOCR($element_screenshot))->run();
+    $driver->quit();
+    return view('videocr.video', compact('text','embedUrl'));
     }
 
   public function showVideo(Request $request)

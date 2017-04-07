@@ -29,6 +29,10 @@
                     <div class="panel-heading">Jon Gander</div>
 
                     <div class="panel-body">
+                        Initially from Westport Ontario, Jon has lived in Halifax since 2010. After 2 years of and undergraduate
+                        in the arts Jon decided that starving was bad and getting paid to solve puzzles... that was just a bit better.
+                        After working odd jobs for a couple years Jon decided to pursue a career in Database Development and application programming
+                        through NSCC. Jon will graduate in spring of 2017 with a full time position at IBM doing Java development.
 
                     </div>
                 </div>

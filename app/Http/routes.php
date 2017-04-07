@@ -23,6 +23,7 @@ Route::resource('docs', 'DocsController');
 Route::get('webkit', 'VideocrController@TakeScreenshot');
 Route::get('videocr', 'VideocrController@index');
 Route::post('videocr', 'VideocrController@showVideo');
+Route::post('videoTess', 'VideocrController@TakeScreenshot');
 Route::post('videocr/image', 'VideocrController@readImage');
 
 

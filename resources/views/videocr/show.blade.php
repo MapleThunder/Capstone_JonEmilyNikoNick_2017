@@ -8,12 +8,12 @@
                     <div class="panel-heading">Video</div>
 
                     <div class="panel-body">
-                        This is the page that will have the actual working application on it.
+                        If you want to capture text from a youtube video...
                         <br>
                         <div id="formDiv">
                             <form method="POST" action="/videocr" >
                                 {{csrf_field()}}
-                                Video EMBED url: <input type="text" id="url" name="url">
+                                Youtube video url: <input type="text" id="url" name="url">
                                 <input type="submit" value="GO!">
                             </form>
                         </div>
