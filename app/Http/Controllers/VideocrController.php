@@ -136,11 +136,11 @@ class VideocrController extends Controller
         // Add the user or a 0 for a guest.
         if(isset($request->read_for_user))
         {
-            $readText->read_for_user = $request->read_for_user;
+            $readText->user_id = $request->read_for_user;
         }
         else
         {
-            $readText->read_for_user = 1;
+            $readText->user_id = 1;
         }
         $readText->save();
 

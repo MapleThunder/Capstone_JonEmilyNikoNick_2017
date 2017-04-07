@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     $users = [
         [
             'username' => 'Guest',
-            'email' => 'guest',
+            'email' => 'guest@g.g',
             'password' => bcrypt('guest')
         ],
         [

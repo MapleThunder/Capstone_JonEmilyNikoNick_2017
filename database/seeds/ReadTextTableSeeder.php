@@ -15,15 +15,15 @@ class ReadTextTableSeeder extends Seeder
 
             [
                 'content' => 'They will try to close the door on you, just open it. Stay focused.',
-                'read_for_user' => 1
+                'user_id' => 1
             ],
             [
                 'content' => 'It’s important to use cocoa butter. It’s the key to more success, why not live smooth?',
-                'read_for_user' => 2
+                'user_id' => 2
             ],
             [
                 'content' => 'The other day the grass was brown, now it’s green because I ain’t give up. Never surrender.',
-                'read_for_user' => 3
+                'user_id' => 3
             ],
 
         ];

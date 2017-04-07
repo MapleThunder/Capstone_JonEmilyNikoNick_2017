@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
       "thiagoalessio/tesseract_ocr": "1.0.0-RC",
-        "facebook/webdriver": "^1.4"
+        "facebook/webdriver": "^1.4",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
