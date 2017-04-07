@@ -31,7 +31,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Next JENN
+                    Next JEN
                 </a>
             </div>
 
