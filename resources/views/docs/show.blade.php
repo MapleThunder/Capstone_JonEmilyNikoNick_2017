@@ -31,14 +31,14 @@
                             then populate the image view on the page with the image that was uploaded.
                             The user then clicks the OCR button which covers the image with an overlay. Any text in the image
                             is selected and is read using the OCR and the text then appears in another textbox on the page.
-                            Options are given to the user as to what they can do with this text, eg. copy to clipboard, tweet, email, etc.
+                            Options are given to the user as to what they can do with this text including copy to clipboard, tweet and email.
                         </p>
                         <p>
                             On a separate site page, the user may do the same with a video. The user can paste a YouTube or Vimeo
                             video URL into a textbox. The user is then able to watch the video and pause when needed.
                             When the video is paused, the user then clicks the OCR button and the text on the paused screen
                             then appears in another textbox on the page. Options are given to the user as to what they can
-                            do with this text, eg. copy to clipboard, tweet, email, etc.
+                            do with this text including copy to clipboard, tweet and email.
                         </p>
                         <p>
                             All text selected using the OCR will be stored in a database. Data included in this capture will
