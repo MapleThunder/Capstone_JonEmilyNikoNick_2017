@@ -11,7 +11,7 @@
                             <div class="col-md-6">
                                 <textarea id="textarea" name="textarea" cols="50" rows="10">{{ $text }}</textarea>
                                 <br /><br />
-                                <a class="btn btn-primary" href="videocr">Back</a>
+                                <a class="btn btn-primary" href="/videocr">Back</a>
                             </div>
 
 
