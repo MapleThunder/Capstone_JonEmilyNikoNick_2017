@@ -11,18 +11,29 @@
                             <div class="container-fluid">
 
                                 <div class="row">
+                                    <div class="col-md-4">.col-md-4</div>
+                                    <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+                                </div>
 
-                                    <div class="col-lg-6>" style="background-color:yellow;">
+                                <div class="row">
+
+                                    <div class="col-md-6>" style="background-color:yellow;">
                                         <textarea id="textarea" cols="50" rows="10">{{ $text }}</textarea>
+                                        <br /><br />
+                                        <a class="btn btn-primary" href="videocr">Back</a>
                                     </div>
 
 
-                                    <div class="col-lg-6>" style="background-color:pink;">
+                                    <div class="col-md-6 col-md-offset-6" style="background-color:pink;">
 
                                         {{--<button type="button" class="btn btn-primary" onclick="ClipBoard({{ $text }});">Copy</button>--}}
                                         <button type="button" class="btn btn-primary" onclick="copyToClipboard(document.getElementById('textarea').innerHTML)">Copy</button>
 
+                                        <br /><br />
+
                                         <a href="mailto:?subject=Check this out!" class="btn btn-primary">Email</a>
+
+                                        <br /><br />
 
                                         <a class="twitter-share-button btn btn-primary"
                                            href="https://twitter.com/intent/tweet?text={{ $text }}"
@@ -30,8 +41,7 @@
                                            data-size="large">
                                             Tweet</a>
 
-                                        <br />
-                                        <a class="btn btn-primary" href="videocr">Back</a>
+
                                     </div>
 
                                 </div>
