@@ -20,24 +20,24 @@
                             to transcribing written text from a photo or video source. It allows the user
                             to input a video link or upload an image, a screen overlay will cover the paused video or image and
                             retrieve any text in the covered region. This text will then be transcribed for the user into a
-                            text area located on the page.
+                            text area located on the web page.
                         </p>
 
                         <br />
 
                         <p><em>How it works</em></p>
 
-                        <p>The user can upload an image to the page. The image provided will
-                            then populate the image view on the page with the image that was uploaded.
-                            The user then clicks the OCR button which covers the image with an overlay. Any text in the image
-                            is selected and is read using the OCR and the text then appears in another textbox on the page.
+                        <p>The user can upload an image to the web page. Clicking the Read Image button will have the OCR
+                            software read the image that was uploaded. Any text in the image
+                            is selected and is read using the OCR and the text then appears in a textarea on the following page.
                             Options are given to the user as to what they can do with this text including copy to clipboard, tweet and email.
                         </p>
                         <p>
                             On a separate site page, the user may do the same with a video. The user can paste a YouTube or Vimeo
                             video URL into a textbox. The user is then able to watch the video and pause when needed.
-                            When the video is paused, the user then clicks the OCR button and the text on the paused screen
-                            then appears in another textbox on the page. Options are given to the user as to what they can
+                            When the video is paused, the user then right clicks and selects Copy video URL at current time.
+                            This image is read using the OCR and the text
+                            then appears in a textarea on the page. Options are given to the user as to what they can
                             do with this text including copy to clipboard, tweet and email.
                         </p>
                         <p>
@@ -47,8 +47,7 @@
                         <p>
                             The user has the option to register an account with the site. Registered users will have access
                             to a history page so that they are able to see past text selections.
-                            This information is retrieved from the database. The same options as when they originally selected
-                            the text will be given again, eg. copy to clipboard, tweet, email, etc.
+                            This information is retrieved from the database.
                         </p>
 
                         <br />
