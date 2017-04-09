@@ -50,7 +50,7 @@
 
                                         <br /><br />
 
-                                        <a href='mailto:?subject=Check this out!' class='btn btn-primary'>Email</a>
+                                        <a href='mailto:?subject=Check this out!&body={{ $text }}' class='btn btn-primary'>Email</a>
 
                                         <br /><br />
 
