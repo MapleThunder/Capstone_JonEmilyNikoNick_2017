@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -17,6 +19,39 @@
     <link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
 <body id="app-layout">
+
+<?php
+//Adding this here to make sure that the Selenium browser is generated ASAP for the most consistent viewing experience.
+use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Facebook\WebDriver\Chrome;
+
+try{session_start();}
+catch (Exception $e){};
+if(!isset($_SESSION["active_driver"]))
+{
+    try{
+        //The $options and $caps lines can be replaced by the comment on the RemoteWebDriver::create line
+        $options = new Chrome\ChromeOptions();
+        //TODO try adding encoded extension instead: https://facebook.github.io/php-webdriver/1.3.0/Facebook/WebDriver/Chrome/ChromeOptions.html#method_addEncodedExtensions
+        $options->addExtensions(array(
+                '/home/inet2005/4.2.1_0.crx'
+        ));
+        $caps = DesiredCapabilities::chrome();
+        $caps->setCapability(Chrome\ChromeOptions::CAPABILITY, $options);
+        $host = 'http://localhost:4444/wd/hub';
+        $this->driver = RemoteWebDriver::create($host, $caps); //  RemoteWebDriver::create($host, DesiredCapabilities::chrome());
+        $_SESSION["active_driver"] = $this->driver->getSessionID();
+    }catch (Exception $e)
+    {
+        echo "<div class='alert alert-warning'>
+                <strong>Server Malfunction</strong> Due to server configuration video portions of this site may not work. Try again later!
+              </div>";
+        };
+
+
+}
+?>
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">

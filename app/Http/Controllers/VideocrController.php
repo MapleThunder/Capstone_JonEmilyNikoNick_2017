@@ -33,19 +33,6 @@ class VideocrController extends Controller
 
   public function TakeScreenshot(Request $request) {
     session_start();
-    //The original TakeScreenshot before being optimized for this project: https://github.com/facebook/php-webdriver/wiki/taking-full-screenshot-and-of-an-element
-
-
-    //setting up Chrome so that youtube adblocker extension will be applied.
-    //$options = new Chrome\ChromeOptions();
-    //TODO try adding encoded extension instead: https://facebook.github.io/php-webdriver/1.3.0/Facebook/WebDriver/Chrome/ChromeOptions.html#method_addEncodedExtensions
-    //$options->addExtensions(array(
-    //  '/home/inet2005/4.2.1_0.crx'
-    //));
-    //$caps = DesiredCapabilities::chrome();
-    //$caps->setCapability(Chrome\ChromeOptions::CAPABILITY, $options);
-
-    //$screenshot_of_element = TakeScreenshot($this->driver->findElement(WebDriverBy::id("movie_player"));
     //getting Selenium running for host:
     //https://gist.github.com/kyleian/b049b066e787f2599063b21208b6d8bf
     //http://chandrewz.github.io/blog/selenium-on-centos
@@ -56,21 +43,30 @@ class VideocrController extends Controller
     }
     else
     {
-      $this->driver = RemoteWebDriver::create($host,  DesiredCapabilities::chrome());
+      //The $options and $caps lines can be replaced by the comment on the RemoteWebDriver::create line
+      $options = new Chrome\ChromeOptions();
+      $options->addExtensions(array(
+        '/home/inet2005/4.2.1_0.crx'
+      ));
+      $caps = DesiredCapabilities::chrome();
+      $caps->setCapability(Chrome\ChromeOptions::CAPABILITY, $options);
+      $host = 'http://localhost:4444/wd/hub';
+      $this->driver = RemoteWebDriver::create($host, $caps); //  RemoteWebDriver::create($host, DesiredCapabilities::chrome());
       $_SESSION["active_driver"] = $this->driver->getSessionID();
+      //$this->driver = RemoteWebDriver::create($host,  DesiredCapabilities::chrome());
+      //$_SESSION["active_driver"] = $this->driver->getSessionID();
     }
 
     $driver = $this->driver;
 
-    //testing hitting a website with the browser
-    //$driver->navigate('http://www.wikipedia.org/');
     $pancake = $_POST["tessUrl"];
-    $driver->get($pancake);//
+    $driver->get($pancake);
     //$driver->get('https://youtu.be/SeOTOQWM1RU?t=32');
     $driver->navigate();
 
-
-
+    //pausing code execution here for .5 seconds to give youtube time to load in Selenium. Avoids taking a screenshot of
+    // a black page as the video loads.
+    time_nanosleep(0, 500000000);
 
     $element = $driver->findElement(\Facebook\WebDriver\WebDriverBy::id('movie_player'));// (WebDriverBy::id("movie_player"));
 
@@ -108,7 +104,13 @@ class VideocrController extends Controller
     $embedUrl = $_POST["embedUrl"];
 
     $text = (new TesseractOCR($element_screenshot))->run();
-    //$driver->quit();
+    // Clean up the text a bit
+    //get rid of some of the common strings that get read in because of the timestamp on the video.
+    $text =  strpos($text, 'II')? substr($text, 0, strpos($text, 'II')): $text;
+    $text =  strpos($text, '||')? substr($text, 0, strpos($text, '||')): $text;
+    $text =  strpos($text, 'u n')? substr($text, 0, strpos($text, 'u n')): $text;
+
+    $text = rtrim($text);
     return view('videocr.video', compact('text','embedUrl'));
     }
 

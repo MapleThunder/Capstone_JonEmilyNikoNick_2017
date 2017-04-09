@@ -40,7 +40,7 @@
                                 <div class='panel panel-default'
                                     <div class='panel-heading'>Text Captured from Video</div>
                                     <div class='panel-body'>
-                                        <textarea cols='50' rows='10'>{{ $text }}</textarea>
+                                        <textarea cols='50' rows='10'>$text</textarea>
                                     </div>
                                 </div>
                             </div>
