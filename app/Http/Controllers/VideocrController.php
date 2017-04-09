@@ -17,6 +17,8 @@ use App\Http\Requests;
  */
 class VideocrController extends Controller
 {
+  private $driver;
+
     public function index()
     {
       return view('videocr.show');
@@ -30,6 +32,7 @@ class VideocrController extends Controller
   }
 
   public function TakeScreenshot(Request $request) {
+    session_start();
     //The original TakeScreenshot before being optimized for this project: https://github.com/facebook/php-webdriver/wiki/taking-full-screenshot-and-of-an-element
 
 
@@ -47,7 +50,17 @@ class VideocrController extends Controller
     //https://gist.github.com/kyleian/b049b066e787f2599063b21208b6d8bf
     //http://chandrewz.github.io/blog/selenium-on-centos
     $host = 'http://localhost:4444/wd/hub';
-    $driver = RemoteWebDriver::create($host,  DesiredCapabilities::chrome());
+    if(isset($_SESSION["active_driver"]))
+    {
+      $this->driver = RemoteWebDriver::createBySessionID($_SESSION["active_driver"], $host);
+    }
+    else
+    {
+      $this->driver = RemoteWebDriver::create($host,  DesiredCapabilities::chrome());
+      $_SESSION["active_driver"] = $this->driver->getSessionID();
+    }
+
+    $driver = $this->driver;
 
     //testing hitting a website with the browser
     //$driver->navigate('http://www.wikipedia.org/');
@@ -55,6 +68,10 @@ class VideocrController extends Controller
     $driver->get($pancake);//
     //$driver->get('https://youtu.be/SeOTOQWM1RU?t=32');
     $driver->navigate();
+
+
+
+
     $element = $driver->findElement(\Facebook\WebDriver\WebDriverBy::id('movie_player'));// (WebDriverBy::id("movie_player"));
 
     // Change the Path to your own settings
@@ -91,7 +108,7 @@ class VideocrController extends Controller
     $embedUrl = $_POST["embedUrl"];
 
     $text = (new TesseractOCR($element_screenshot))->run();
-    $driver->quit();
+    //$driver->quit();
     return view('videocr.video', compact('text','embedUrl'));
     }
 
