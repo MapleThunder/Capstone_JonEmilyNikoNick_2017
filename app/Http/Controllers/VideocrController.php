@@ -109,7 +109,7 @@ class VideocrController extends Controller
     $text =  strpos($text, 'II')? substr($text, 0, strpos($text, 'II')): $text;
     $text =  strpos($text, '||')? substr($text, 0, strpos($text, '||')): $text;
     $text =  strpos($text, 'u n')? substr($text, 0, strpos($text, 'u n')): $text;
-
+    $text =  htmlspecialchars($text);
     $text = rtrim($text);
     return view('videocr.video', compact('text','embedUrl'));
     }
