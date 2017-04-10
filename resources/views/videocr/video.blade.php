@@ -24,6 +24,9 @@
                         <div id="formDiv">
                             <form method="POST" action="/videoTess" >
                                 {{csrf_field()}}
+                                @if (isset(Auth::user()->id))
+                                    <input type="hidden" name="read_for_user" value="{{ Auth::user()->id }}" />
+                                @endif
                                 <input type="hidden" name="embedUrl" value="{{$embedUrl}}" />
                                 Current Time URL: <input type="text" id="tessUrl" name="tessUrl">
                                 <input type="submit" value="GO!">

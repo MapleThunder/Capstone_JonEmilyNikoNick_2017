@@ -111,6 +111,21 @@ class VideocrController extends Controller
     $text =  strpos($text, 'u n')? substr($text, 0, strpos($text, 'u n')): $text;
     $text =  htmlspecialchars($text);
     $text = rtrim($text);
+
+    $readText = new ReadText();
+    $readText->content = $text;
+    //adding it to the user's saves
+    if(isset($request->read_for_user))
+    {
+
+      $readText->user_id = $request->read_for_user;
+    }
+    else
+    {
+      $readText->user_id = 1;
+    }
+    $readText->save();
+
     return view('videocr.video', compact('text','embedUrl'));
     }
 
@@ -163,6 +178,10 @@ class VideocrController extends Controller
             $readText->user_id = 1;
         }
         $readText->save();
+
+      $text =  strpos($text, 'II')? substr($text, 0, strpos($text, 'II')): $text;
+      $text =  strpos($text, '||')? substr($text, 0, strpos($text, '||')): $text;
+      $text =  strpos($text, 'u n')? substr($text, 0, strpos($text, 'u n')): $text;
 
         return view("videocr.image", compact("text"));
     }

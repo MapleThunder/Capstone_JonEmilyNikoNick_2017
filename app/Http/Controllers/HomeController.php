@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\ReadText;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $texts = Auth::user()->readTexts;
+
         return view('home', compact('texts'));
     }
 }
