@@ -27,6 +27,7 @@ class VideocrController extends Controller
   public function PerformTextgrab()
   {
     $filename = "test1.png";
+    // If ->run() is giving you issues try ->recognise(), as this is Tesseract's previous name for the action.
     $text = (new TesseractOCR(__DIR__ . '/../../../uploads/' . $filename))->run();
     return view('videocr.video', compact('text'));
   }
@@ -102,7 +103,7 @@ class VideocrController extends Controller
       throw new Exception('Could not save element screenshot');
     }*/
     $embedUrl = $_POST["embedUrl"];
-
+// If ->run() is giving you issues try ->recognise(), as this is Tesseract's previous name for the action.
     $text = (new TesseractOCR($element_screenshot))->run();
     // Clean up the text a bit
     //get rid of some of the common strings that get read in because of the timestamp on the video.
@@ -164,6 +165,7 @@ class VideocrController extends Controller
         // Grab the image
         $target_file = $_FILES["imgUp"]["name"];
         // Recognize the text
+        // If ->run() is giving you issues try ->recognise(), as this is Tesseract's previous name for the action.
         $text = (new TesseractOCR($_FILES["imgUp"]["tmp_name"]))->run();
 
         $readText = new ReadText();

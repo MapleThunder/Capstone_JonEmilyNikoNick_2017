@@ -18,8 +18,8 @@
                         </p>
                         <p>VideOCR is a website meant to provide a simple web-based solution
                             to transcribing written text from a photo or video source. It allows the user
-                            to input a video link or upload an image, a screen overlay will cover the paused video or image and
-                            retrieve any text in the covered region. This text will then be transcribed for the user into a
+                            to input a video link or upload an image and retrieve any text
+                            from the image or specified time of video. This text will then be transcribed for the user into a
                             text area located on the web page.
                         </p>
 
@@ -33,7 +33,7 @@
                             Options are given to the user as to what they can do with this text including copy to clipboard, tweet and email.
                         </p>
                         <p>
-                            On a separate site page, the user may do the same with a video. The user can paste a YouTube or Vimeo
+                            On a separate site page, the user may do the same with a video. The user can paste a YouTube
                             video URL into a textbox. The user is then able to watch the video and pause when needed.
                             When the video is paused, the user then right clicks and selects Copy video URL at current time.
                             This image is read using the OCR and the text
